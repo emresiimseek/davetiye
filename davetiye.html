@@ -30,18 +30,14 @@
 
       #petal-canvas {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        inset: 0;
         pointer-events: none;
-        z-index: 0;
-        overflow: hidden;
+        z-index: 9999;
       }
 
       .petal {
         position: absolute;
-        top: -80px;
+        top: 0;
         opacity: 0;
         animation: fallPetal linear infinite;
       }
@@ -1174,13 +1170,13 @@
         "#f8f4e8",
       ];
 
-      function createPetal() {
+      function createPetal(initial = false) {
         const petal = document.createElement("div");
         petal.className = "petal";
         const size = 8 + Math.random() * 22;
         const x = Math.random() * 100;
         const duration = 7 + Math.random() * 11;
-        const delay = Math.random() * 9;
+        const delay = initial ? -(Math.random() * duration) : Math.random() * 9;
         const color =
           petalColors[Math.floor(Math.random() * petalColors.length)];
         const type = Math.floor(Math.random() * 3);
@@ -1215,8 +1211,13 @@
         setTimeout(() => petal.remove(), (duration + delay) * 1000 + 500);
       }
 
-      setInterval(createPetal, 280);
-      for (let i = 0; i < 18; i++) setTimeout(createPetal, i * 180);
+      // Sayfa açılır açılmaz ekranda çiçekler olsun
+      for (let i = 0; i < 30; i++) {
+        createPetal(true);
+      }
+
+      // Yeni çiçek üretmeye devam et
+      setInterval(() => createPetal(false), 280);
 
       let animating = false;
 
