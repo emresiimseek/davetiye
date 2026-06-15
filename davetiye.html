@@ -269,7 +269,7 @@
         background: #faf7f0;
         border: 1px solid rgba(140, 158, 122, 0.35);
         border-radius: 10px;
-        padding: 3.5rem 1rem;
+        padding: 1.2rem 1rem;
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -1212,13 +1212,11 @@
       }
 
       // Sayfa açılır açılmaz ekranda çiçekler olsun
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 4; i++) {
         createPetal(true);
       }
 
-      // Yeni çiçek üretmeye devam et
-      setInterval(() => createPetal(false), 280);
-
+      setInterval(() => createPetal(false), 1000);
       let animating = false;
 
       function startAnimation() {
