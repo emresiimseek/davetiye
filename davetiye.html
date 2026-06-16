@@ -292,9 +292,9 @@
         margin-bottom: 0.8rem;
         position: relative;
         z-index: 2;
-        display: flex; /* Esnek kutu yapısı */
-        align-items: center; /* Dikeyde ortalama */
-        justify-content: center; /* Yatayda ortalama */
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .couple-names-row {
@@ -431,7 +431,6 @@
         height: 14px;
       }
 
-      /* Yeni eklenen açık adres stili */
       .venue-address {
         font-size: 0.88rem;
         color: #5a6b4e;
@@ -502,25 +501,24 @@
   <body>
     <div id="petal-canvas"></div>
 
-    <!-- ZARF EKRANI -->
     <div id="screen-envelope">
       <div class="countdown-section">
         <p class="countdown-label">✦ Düğüne Kalan Süre ✦</p>
         <div class="countdown-grid">
           <div class="count-box">
-            <span class="count-num" id="cd-gun">—</span
+            <span class="count-num cd-gun">—</span
             ><span class="count-unit">Gün</span>
           </div>
           <div class="count-box">
-            <span class="count-num" id="cd-saat">—</span
+            <span class="count-num cd-saat">—</span
             ><span class="count-unit">Saat</span>
           </div>
           <div class="count-box">
-            <span class="count-num" id="cd-dk">—</span
+            <span class="count-num cd-dk">—</span
             ><span class="count-unit">Dakika</span>
           </div>
           <div class="count-box">
-            <span class="count-num" id="cd-sn">—</span
+            <span class="count-num cd-sn">—</span
             ><span class="count-unit">Saniye</span>
           </div>
         </div>
@@ -728,7 +726,6 @@
       <p class="env-hint">✦ Zarfa tıklayın ✦</p>
     </div>
 
-    <!-- DAVETİYE KARTI -->
     <div id="screen-card">
       <div class="card">
         <svg
@@ -1105,18 +1102,18 @@
             Yol tarifi al
           </a>
 
-          <!-- Yeni eklenen açık adres metni -->
-
           <div class="map-container">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d285.5655558294841!2d28.920954278392095!3d41.04213229966296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caba712babac85%3A0x8fc3a3568bbcf3f6!2sTeras%20Salon!5e0!3m2!1str!2str!4v1781553937710!5m2!1str!2str"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.2190831577077!2d28.918497312997914!3d41.042337871226295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caba712babac85%3A0x8fc3a3568bbcf3f6!2sTeras%20Salon!5e0!3m2!1str!2str!4v1781595198355!5m2!1str!2str"
+              width="600"
+              height="450"
               style="border: 0"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          <!-- Güncellenmiş Otopark Bilgisi -->
+
           <div
             style="
               margin-top: 15px;
@@ -1132,8 +1129,8 @@
             "
           >
             <svg
-              width="16"
-              height="16"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
               fill="none"
               stroke="#6a7e58"
@@ -1145,8 +1142,9 @@
               <path d="M9 17V7h3.5a2.5 2.5 0 0 1 0 5H9" />
             </svg>
             <span style="font-weight: 500"
-              >Misafirlerimize özel otoparkımız mevcuttur.</span
-            >
+              >Misafirlerimize özel otopark ve teras katına kadar araç erişimi
+              mevcuttur.
+            </span>
           </div>
         </div>
 
@@ -1156,19 +1154,19 @@
           <p class="countdown-label">✦ Düğüne Kalan Süre ✦</p>
           <div class="countdown-grid">
             <div class="count-box">
-              <span class="count-num" id="cd-gun">—</span
+              <span class="count-num cd-gun">—</span
               ><span class="count-unit">Gün</span>
             </div>
             <div class="count-box">
-              <span class="count-num" id="cd-saat">—</span
+              <span class="count-num cd-saat">—</span
               ><span class="count-unit">Saat</span>
             </div>
             <div class="count-box">
-              <span class="count-num" id="cd-dk">—</span
+              <span class="count-num cd-dk">—</span
               ><span class="count-unit">Dakika</span>
             </div>
             <div class="count-box">
-              <span class="count-num" id="cd-sn">—</span
+              <span class="count-num cd-sn">—</span
               ><span class="count-unit">Saniye</span>
             </div>
           </div>
@@ -1191,8 +1189,6 @@
         "#f8f4e8",
       ];
 
-      setInterval(updateCountdown, 1000);
-
       function createPetal(initial = false) {
         const petal = document.createElement("div");
         petal.className = "petal";
@@ -1211,35 +1207,29 @@
 
         if (type === 0) {
           petal.innerHTML = `<svg width="${size}" height="${size * 1.8}" viewBox="0 0 20 36" fill="none">
-      <path d="M10 0 Q2 8 0 18 Q2 28 10 36 Q18 28 20 18 Q18 8 10 0Z" fill="${color}" opacity="0.88"/>
-      <path d="M10 4 Q10 18 10 32" stroke="rgba(100,130,70,0.2)" stroke-width="0.8" fill="none"/>
-    </svg>`;
+            <path d="M10 0 Q2 8 0 18 Q2 28 10 36 Q18 28 20 18 Q18 8 10 0Z" fill="${color}" opacity="0.88"/>
+            <path d="M10 4 Q10 18 10 32" stroke="rgba(100,130,70,0.2)" stroke-width="0.8" fill="none"/>
+          </svg>`;
         } else if (type === 1) {
           petal.innerHTML = `<svg width="${size * 1.3}" height="${size}" viewBox="0 0 26 18" fill="none">
-      <path d="M0 9 Q4 0 13 0 Q22 0 26 9 Q22 18 13 18 Q4 18 0 9Z" fill="${color}" opacity="0.82"/>
-    </svg>`;
+            <path d="M0 9 Q4 0 13 0 Q22 0 26 9 Q22 18 13 18 Q4 18 0 9Z" fill="${color}" opacity="0.82"/>
+          </svg>`;
         } else {
           petal.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 20 20" fill="none">
-      <circle cx="10" cy="4" r="3.5" fill="${color}" opacity="0.88"/>
-      <circle cx="16" cy="7" r="3.5" fill="${color}" opacity="0.82"/>
-      <circle cx="16" cy="13" r="3.5" fill="${color}" opacity="0.88"/>
-      <circle cx="10" cy="16" r="3.5" fill="${color}" opacity="0.82"/>
-      <circle cx="4" cy="13" r="3.5" fill="${color}" opacity="0.88"/>
-      <circle cx="4" cy="7" r="3.5" fill="${color}" opacity="0.82"/>
-      <circle cx="10" cy="10" r="3" fill="#fffdf5" opacity="0.9"/>
-    </svg>`;
+            <circle cx="10" cy="4" r="3.5" fill="${color}" opacity="0.88"/>
+            <circle cx="16" cy="7" r="3.5" fill="${color}" opacity="0.82"/>
+            <circle cx="16" cy="13" r="3.5" fill="${color}" opacity="0.88"/>
+            <circle cx="10" cy="16" r="3.5" fill="${color}" opacity="0.82"/>
+            <circle cx="4" cy="13" r="3.5" fill="${color}" opacity="0.88"/>
+            <circle cx="4" cy="7" r="3.5" fill="${color}" opacity="0.82"/>
+            <circle cx="10" cy="10" r="3" fill="#fffdf5" opacity="0.9"/>
+          </svg>`;
         }
 
         petalCanvas.appendChild(petal);
         setTimeout(() => petal.remove(), (duration + delay) * 1000 + 500);
       }
 
-      // Sayfa açılır açılmaz ekranda çiçekler olsun
-      for (let i = 0; i < 4; i++) {
-        createPetal(true);
-      }
-
-      setInterval(() => createPetal(false), 1000);
       let animating = false;
 
       function startAnimation() {
@@ -1275,32 +1265,54 @@
         setTimeout(() => {
           screenEnv.style.display = "none";
           screenCard.style.display = "block";
-          updateCountdown();
-          setInterval(updateCountdown, 1000);
         }, 2800);
       }
 
       function updateCountdown() {
         const diff = new Date("2026-09-19T13:00:00") - new Date();
         if (diff <= 0) {
-          ["cd-gun", "cd-saat", "cd-dk", "cd-sn"].forEach(
-            (id) => (document.getElementById(id).textContent = "00"),
-          );
+          document
+            .querySelectorAll(".cd-gun, .cd-saat, .cd-dk, .cd-sn")
+            .forEach((el) => {
+              el.textContent = "00";
+            });
           return;
         }
-        document.getElementById("cd-gun").textContent = String(
-          Math.floor(diff / 86400000),
-        ).padStart(2, "0");
-        document.getElementById("cd-saat").textContent = String(
-          Math.floor((diff % 86400000) / 3600000),
-        ).padStart(2, "0");
-        document.getElementById("cd-dk").textContent = String(
-          Math.floor((diff % 3600000) / 60000),
-        ).padStart(2, "0");
-        document.getElementById("cd-sn").textContent = String(
-          Math.floor((diff % 60000) / 1000),
-        ).padStart(2, "0");
+
+        const days = String(Math.floor(diff / 86400000)).padStart(2, "0");
+        const hours = String(Math.floor((diff % 86400000) / 3600000)).padStart(
+          2,
+          "0",
+        );
+        const mins = String(Math.floor((diff % 3600000) / 60000)).padStart(
+          2,
+          "0",
+        );
+        const secs = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
+
+        document
+          .querySelectorAll(".cd-gun")
+          .forEach((el) => (el.textContent = days));
+        document
+          .querySelectorAll(".cd-saat")
+          .forEach((el) => (el.textContent = hours));
+        document
+          .querySelectorAll(".cd-dk")
+          .forEach((el) => (el.textContent = mins));
+        document
+          .querySelectorAll(".cd-sn")
+          .forEach((el) => (el.textContent = secs));
       }
+
+      // Sayfa açılır açılmaz tetiklenecek fonksiyonlar
+      for (let i = 0; i < 4; i++) {
+        createPetal(true);
+      }
+      setInterval(() => createPetal(false), 1000);
+
+      // Sayfa açılır açılmaz zamanlayıcıyı yükle ve saniyede bir güncelle
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
     </script>
   </body>
 </html>
